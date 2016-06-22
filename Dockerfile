@@ -3,6 +3,11 @@ FROM richarvey/nginx-php-fpm
 MAINTAINER auchri <auer.chrisi@gmx.net>
 
 ENV PIWIK_VERSION latest
+ENV GEOIP_FILE_NAME GeoLiteCity.dat
+ENV GEOIP_FILE_NAME_GZ ${GEOIP_FILE_NAME}.gz
+
+RUN apk add --no-cache bash \
+   unzip
 
 RUN cd /var/www/html && \
     wget http://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
@@ -17,5 +22,10 @@ RUN cd /var/www/html && \
 
 RUN sed -i -e 's/;always_populate_raw_post_data = -1/always_populate_raw_post_data = -1/g' /etc/php5/php.ini
 RUN sed -i -e 's/;always_populate_raw_post_data = -1/always_populate_raw_post_data = -1/g' /etc/php5/conf.d/php.ini
+
+RUN wget http://geolite.maxmind.com/download/geoip/database/${GEOIP_FILE_NAME_GZ} && \
+    gunzip -c ${GEOIP_FILE_NAME_GZ} > /var/www/html/misc/${GEOIP_FILE_NAME} && \
+    chown nginx:nginx /var/www/html/misc/${GEOIP_FILE_NAME} && \
+    rm -f ${GEOIP_FILE_NAME_GZ}
 
 EXPOSE 443 80
