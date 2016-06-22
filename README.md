@@ -22,6 +22,8 @@ To run the container, you have to provide an mysql server.
 
 `docker run -d --link my-database-host:database --name piwik auchri/docker-nginx-piwik`
 
+After that, you can access piwik on port 80.
+
 ## Installation
 
 At the first time you access piwik, you have to enter the database credentials and create an admin user.
