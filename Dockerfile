@@ -2,7 +2,7 @@ FROM richarvey/nginx-php-fpm
 
 MAINTAINER auchri <auer.chrisi@gmx.net>
 
-ENV PIWIK_VERSION latest
+ENV PIWIK_VERSION 2.16.1
 ENV GEOIP_FILE_NAME GeoLiteCity.dat
 ENV GEOIP_FILE_NAME_GZ ${GEOIP_FILE_NAME}.gz
 
