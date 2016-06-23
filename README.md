@@ -3,7 +3,7 @@ A docker image with nginx and piwik.
 
 ## Pull from docker hub
 
-To pull this image from the docker hub, use to following command:
+To pull this image from the [docker hub](https://hub.docker.com/r/auchri/docker-nginx-piwik/), use to following command:
 
 `docker pull auchri/docker-nginx-piwik`
 
