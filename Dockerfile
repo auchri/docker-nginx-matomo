@@ -9,6 +9,8 @@ ENV GEOIP_FILE_NAME_GZ ${GEOIP_FILE_NAME}.gz
 RUN apk add --no-cache bash \
    unzip
 
+ADD robots.txt /var/www/html/robots.txt
+
 RUN cd /var/www/html && \
     wget http://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
     tar -xzf piwik-${PIWIK_VERSION}.tar.gz && \
