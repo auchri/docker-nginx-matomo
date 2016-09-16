@@ -18,9 +18,14 @@ docker build -t auchri/docker-nginx-piwik:latest .
 
 ## Running
 
-To run the container, you have to provide an mysql server.
+To run the container with docker-compose:
 
-`docker run -d --link my-database-host:database --name piwik auchri/docker-nginx-piwik`
+`docker-compose up`
+
+To run the container with docker:
+
+`docker run --name mysql -p 80:80 -e MYSQL_ROOT_PASSWORD=pw -e MYSQL_DATABASE=piwik -e MYSQL_USER=piwik -e MYSQL_PASSWORD=piwik  mariadb`
+`docker run -d --link mysql:database --name piwik auchri/docker-nginx-piwik`
 
 After that, you can access piwik on port 80.
 
@@ -28,6 +33,7 @@ After that, you can access piwik on port 80.
 
 At the first time you access piwik, you have to enter the database credentials and create an admin user.
 use `database` as the mysql host.
+use `piwik` as database-name, db_username and db_password
 
 ## Upgrading
 
