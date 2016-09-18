@@ -1,0 +1,14 @@
+piwik:
+  image: auchri/docker-nginx-piwik
+  ports: 
+   - 80:80 
+  links:
+    - mysql:database 
+
+mysql:
+  image: mariadb
+  environment:
+   - MYSQL_ROOT_PASSWORD=pw 
+   - MYSQL_DATABASE=piwik
+   - MYSQL_USER=piwik
+   - MYSQL_PASSWORD=piwik
