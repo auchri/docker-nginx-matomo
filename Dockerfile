@@ -26,7 +26,10 @@ RUN cd /usr/src/ && mkdir -p ${GEOIP_PATH} && \
     gunzip -c ${GEOIP_FILE_NAME_GZ} > ${GEOIP_FILE} && \
     chown -R nginx:nginx ${GEOIP_PATH} && \
     rm -f ${GEOIP_FILE_NAME_GZ}
+RUN cd /usr/src && \
+    rm -rf php.tar.xz php.tar.xz.asc \
+    miscGeoIPCity.dat How to install Piwik.html
 
 VOLUME /var/www/html
 CMD cp -r /usr/src/* /var/www/html/ && /start.sh
-EXPOSE 443 80
+EXPOSE 80
