@@ -27,7 +27,7 @@ RUN mkdir -p ${GEOIP_PATH} && \
     chown -R nginx:nginx ${GEOIP_PATH} && \
     rm -f ${GEOIP_FILE_NAME_GZ}
 RUN cd /usr/src && \
-    rm -rf php.tar.xz php.tar.xz.asc \
+    rm -rf php.tar.xz php.tar.xz.asc
 
 VOLUME /var/www/html
 CMD cp -r /usr/src/* /var/www/html/ && /start.sh
