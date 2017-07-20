@@ -28,7 +28,7 @@ RUN cd /usr/src/ && mkdir -p ${GEOIP_PATH} && \
     rm -f ${GEOIP_FILE_NAME_GZ}
 RUN cd /usr/src && \
     rm -rf php.tar.xz php.tar.xz.asc \
-    miscGeoIPCity.dat How to install Piwik.html
+    miscGeoIPCity.dat How\ to\ install\ Piwik.html
 
 VOLUME /var/www/html
 CMD cp -r /usr/src/* /var/www/html/ && /start.sh
