@@ -18,6 +18,7 @@ RUN mkdir -p ${PIWIK_PATH} && cd ${PIWIK_PATH} && \
     wget https://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
     tar -xzf piwik-${PIWIK_VERSION}.tar.gz && \
     rm piwik-${PIWIK_VERSION}.tar.gz && \
+    rm *.html && \
     mv piwik/* . && \
     rm -r piwik && \
     chown -Rf nginx:nginx . && \
