@@ -2,7 +2,7 @@ FROM richarvey/nginx-php-fpm
 
 MAINTAINER auchri <auer.chrisi@gmx.net>
 
-ARG PIWIK_VERSION=3.1.0
+ARG PIWIK_VERSION=3.1.1
 ARG GEOIP_PATH=/usr/src/misc/
 ARG GEOIP_FILE=${GEOIP_PATH}GeoIPCity.dat
 ARG GEOIP_FILE_NAME_GZ=GeoLiteCity.dat.gz
