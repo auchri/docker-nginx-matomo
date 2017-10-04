@@ -1,8 +1,10 @@
 FROM richarvey/nginx-php-fpm
 
-MAINTAINER auchri <auer.chrisi@gmx.net>
+LABEL maintainer="auchri <auer.chrisi@gmx.net>"
 
 ARG PIWIK_VERSION=3.1.1
+ARG WEBROOT=/var/www/html
+ARG PIWIK_PATH=/usr/piwik
 ARG GEOIP_PATH=/usr/src/misc/
 ARG GEOIP_FILE=${GEOIP_PATH}GeoIPCity.dat
 ARG GEOIP_FILE_NAME_GZ=GeoLiteCity.dat.gz
@@ -10,9 +12,9 @@ ARG GEOIP_FILE_NAME_GZ=GeoLiteCity.dat.gz
 RUN apk add --no-cache bash \
    unzip
 
-ADD robots.txt /var/www/html/robots.txt
+ADD robots.txt ${WEBROOT}/robots.txt
 
-RUN cd /usr/src/ && \
+RUN mkdir ${PIWIK_PATH} && cd ${PIWIK_PATH} && \
     wget https://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
     tar -xzf piwik-${PIWIK_VERSION}.tar.gz && \
     rm piwik-${PIWIK_VERSION}.tar.gz && \
@@ -29,6 +31,6 @@ RUN mkdir -p ${GEOIP_PATH} && \
 RUN cd /usr/src && \
     rm -rf php.tar.xz php.tar.xz.asc
 
-VOLUME /var/www/html
-CMD cp -r /usr/src/* /var/www/html/ && /start.sh
+VOLUME ${WEBROOT}
+CMD cp -rf ${PIWIK_PATH}* ${WEBROOT}/ && /start.sh
 EXPOSE 80
