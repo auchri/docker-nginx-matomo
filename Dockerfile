@@ -17,10 +17,12 @@ ADD robots.txt ${WEBROOT}/robots.txt
 RUN mkdir -p ${PIWIK_PATH} && cd ${PIWIK_PATH} && \
     wget https://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
     tar -xzf piwik-${PIWIK_VERSION}.tar.gz && \
+    stat -c%s piwik/vendor/composer/autoload_static.php && \
     rm piwik-${PIWIK_VERSION}.tar.gz && \
     rm *.html && \
     mv piwik/* . && \
     rm -r piwik && \
+    stat -c%s vendor/composer/autoload_static.php && \
     chown -Rf nginx:nginx . && \
     chmod -Rf 0755 .
 
