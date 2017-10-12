@@ -2,7 +2,7 @@ FROM richarvey/nginx-php-fpm
 
 LABEL maintainer="auchri <auer.chrisi@gmx.net>"
 
-ARG PIWIK_VERSION=3.1.1
+ARG PIWIK_VERSION=3.2.0
 ARG WEBROOT=/var/www/html
 ARG PIWIK_PATH=${WEBROOT}
 ARG GEOIP_PATH=${PIWIK_PATH}/misc/
