@@ -18,7 +18,7 @@ docker build -t auchri/docker-nginx-matomo:latest .
 
 ## Running
 
-To run the container with docker-compose:
+To run the container with docker-compose, create a `docker-compose.yml` with the following content:
 
 ```
 version: '3.7'
@@ -44,6 +44,8 @@ services:
     ports:
       - '80:80'
 ```
+
+and execute `docker-compose up -d` on the same folder as the docker-compose-file is.
 
 After that, you can access Matomo on port 80.
 
