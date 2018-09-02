@@ -20,15 +20,37 @@ docker build -t auchri/docker-nginx-matomo:latest .
 
 To run the container with docker-compose:
 
-TODO: Insert docker-compose example file here
+```
+version: '3.7'
+
+volumes:
+  matomo_database_data:
+
+services:
+  matomo_database:
+    image: mariadb
+    restart: unless-stopped
+    volumes:
+      - matomo_database_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=your-secret-root-password
+      - MYSQL_PASSWORD=your-secret-password
+      - MYSQL_DATABASE=matomo
+      - MYSQL_USER=matomo
+
+  matomo:
+    image: auchri/docker-nginx-matomo
+    restart: unless-stopped
+    ports:
+      - '80:80'
+```
 
 After that, you can access Matomo on port 80.
 
-## Installation
+### Installation
 
 At the first time you access Matomo, you have to enter the database credentials and create an admin user.
-use `database` as the mysql host.
-use `matomo` as database-name, db_username and db_password
+Use `matomo_database` as mysql host, `matomo` as database username and name and use `your-secret-password` as the database password.
 
 ## Upgrading
 
