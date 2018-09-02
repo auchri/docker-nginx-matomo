@@ -22,13 +22,13 @@ To run the container with docker-compose:
 
 TODO: Insert docker-compose example file here
 
-After that, you can access piwik on port 80.
+After that, you can access Matomo on port 80.
 
 ## Installation
 
-At the first time you access piwik, you have to enter the database credentials and create an admin user.
+At the first time you access Matomo, you have to enter the database credentials and create an admin user.
 use `database` as the mysql host.
-use `piwik` as database-name, db_username and db_password
+use `matomo` as database-name, db_username and db_password
 
 ## Upgrading
 
