@@ -1,11 +1,11 @@
-FROM richarvey/nginx-php-fpm
+FROM richarvey/nginx-php-fpm:1.5.3
 
 LABEL maintainer="auchri <auer.chrisi@gmx.net>"
 
-ARG PIWIK_VERSION=3.2.1
+ARG MATOMO_VERSION=3.6.0
 ARG WEBROOT=/var/www/html
-ARG PIWIK_PATH=${WEBROOT}
-ARG GEOIP_PATH=${PIWIK_PATH}/misc/
+ARG MATOMO_PATH=${WEBROOT}
+ARG GEOIP_PATH=${MATOMO_PATH}/misc/
 ARG GEOIP_FILE=${GEOIP_PATH}GeoIPCity.dat
 ARG GEOIP_FILE_NAME_GZ=GeoLiteCity.dat.gz
 
@@ -16,13 +16,13 @@ RUN apk add --no-cache bash \
 
 ADD robots.txt ${WEBROOT}/robots.txt
 
-RUN mkdir -p ${PIWIK_PATH} && cd ${PIWIK_PATH} && \
-    wget https://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
-    tar -xzf piwik-${PIWIK_VERSION}.tar.gz && \
-    rm piwik-${PIWIK_VERSION}.tar.gz && \
+RUN mkdir -p ${MATOMO_PATH} && cd ${MATOMO_PATH} && \
+    wget https://builds.matomo.org/matomo-${MATOMO_VERSION}.tar.gz && \
+    tar -xzf matomo-${MATOMO_VERSION}.tar.gz && \
+    rm matomo-${MATOMO_VERSION}.tar.gz && \
     rm *.html && \
-    mv piwik/* . && \
-    rm -r piwik && \
+    mv matomo/* . && \
+    rm -r matomo && \
     chmod -Rf 0755 .
 
 RUN mkdir -p ${GEOIP_PATH} && \
