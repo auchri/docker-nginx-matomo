@@ -2,7 +2,7 @@ FROM richarvey/nginx-php-fpm:1.5.3
 
 LABEL maintainer="auchri <auer.chrisi@gmx.net>"
 
-ARG MATOMO_VERSION=3.6.1
+ARG MATOMO_VERSION=3.10.0
 ARG WEBROOT=/var/www/html
 ARG MATOMO_PATH=${WEBROOT}
 ARG GEOIP_PATH=${MATOMO_PATH}/misc/
