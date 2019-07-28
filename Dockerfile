@@ -25,9 +25,9 @@ RUN mkdir -p ${MATOMO_PATH} && cd ${MATOMO_PATH} && \
     rm -r matomo && \
     chmod -Rf 0755 .
 
-RUN mkdir -p ${GEOIP_PATH} && \
-    wget https://geolite.maxmind.com/download/geoip/database/${GEOIP_FILE_NAME_GZ} && \
-    gunzip -c ${GEOIP_FILE_NAME_GZ} > ${GEOIP_FILE} && \
-    rm -f ${GEOIP_FILE_NAME_GZ}
+#RUN mkdir -p ${GEOIP_PATH} && \
+#    wget https://geolite.maxmind.com/download/geoip/database/${GEOIP_FILE_NAME_GZ} && \
+#    gunzip -c ${GEOIP_FILE_NAME_GZ} > ${GEOIP_FILE} && \
+#    rm -f ${GEOIP_FILE_NAME_GZ}
 
 EXPOSE 80
