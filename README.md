@@ -1,3 +1,6 @@
+# Deprecated - Use official Matomo docker image
+Matomo provides an official docker image, you should use this instead: https://github.com/matomo-org/docker/blob/master/.examples/apache/docker-compose.yml
+
 # docker-nginx-matomo
 A docker image with nginx and [Matomo](https://matomo.org/).
 
